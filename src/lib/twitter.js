@@ -1,25 +1,21 @@
 "use server";
-
 import { TwitterApi, TwitterApiReadWrite, TwitterApiv2 } from "twitter-api-v2";
-import * as fs from "fs/promises";
-import { join as pathJoin } from "path";
 
-const getFidelPath = () => {
-  return pathJoin(process.cwd(), "public/fidel");
-};
-
-const touched = { current: false };
-
-const touchFidelPath = () => {
-  if (touched.current) return; // only need to do once
-  fs.readdir(getFidelPath()); // fire and forget
-  touched.current = true;
-};
+async function createBufferFromImageUrl(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const arrayBuffer = await response.arrayBuffer();
+    return Buffer.from(arrayBuffer);
+  } catch (error) {
+    console.error("Error creating buffer from image URL:", error);
+    return null;
+  }
+}
 
 export default async function tweet(text1, text2, img) {
-  touchFidelPath();
-  console.log(process.cwd());
-
   const client = new TwitterApi({
     appKey: process.env.APP_KEY,
     appSecret: process.env.APP_SECRET,
@@ -32,7 +28,11 @@ export default async function tweet(text1, text2, img) {
   try {
     if (img) {
       const mediaID = await Promise.all([
-        await twitterClient.v1.uploadMedia("./public" + img),
+        await twitterClient.v1.uploadMedia(
+          await createBufferFromImageUrl(
+            "https://x-poster-enpa.vercel.app" + url,
+          ),
+        ),
       ]);
 
       await client.v2.tweet({
