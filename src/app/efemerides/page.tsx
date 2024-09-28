@@ -33,7 +33,7 @@ export default async function () {
               className="dark:text-white p-3 flex flex-col gap-3 w-[300px]"
             >
               <p>{e.fecha}</p>
-              <p>{String(e.text).slice(0, 300)}</p>
+              <p>{String(e.text).slice(0, 300) + " ..."}</p>
             </div>
           );
         })}

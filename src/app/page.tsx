@@ -33,7 +33,7 @@ export default async function Home() {
                 className="dark:text-white p-3 flex flex-col gap-3 w-[300px]"
               >
                 <p>{n.text}</p>
-                <p>{n.url}</p>
+                <p>{n.url?.slice(0, 35) + " ..."}</p>
               </div>
             );
           })}
