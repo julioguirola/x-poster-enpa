@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Efemerides from "@/components/Efemerides";
 import { scrap } from "@/lib/scrapper";
+import PublishButton from "@/components/PublishButton";
 
 export default async function Home() {
   const cubadebateNews = await scrap(
@@ -9,6 +9,7 @@ export default async function Home() {
     "#front-list > div > .title",
   );
   const tvCav = await scrap("https://www.tvavila.icrt.cu/", "article h4");
+  console.log(cubadebateNews);
 
   return (
     <>
@@ -34,6 +35,11 @@ export default async function Home() {
               >
                 <p>{n.text}</p>
                 <p>{n.url?.slice(0, 35) + " ..."}</p>
+                <PublishButton
+                  text1={n.url?.slice(0, 35) + " ..."}
+                  text2={n.text?.slice(0, 200)}
+                  img=""
+                />
               </div>
             );
           })}

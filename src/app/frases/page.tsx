@@ -3,6 +3,7 @@ import { type WithId } from "mongodb";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
+import PublishButton from "@/components/PublishButton";
 
 export default async function () {
   async function getQuotes() {
@@ -68,6 +69,7 @@ export default async function () {
             >
               <Image src={f.img} alt="" width={250} height={250} />
               <p>{f.frase}</p>
+              <PublishButton text1={f.frase} text2="" img={f.img} />
             </div>
           );
         })}

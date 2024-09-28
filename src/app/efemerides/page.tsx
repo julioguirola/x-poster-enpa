@@ -1,6 +1,7 @@
 import { client } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import PublishButton from "@/components/PublishButton";
 
 export default async function () {
   const fecha = new Date();
@@ -34,6 +35,7 @@ export default async function () {
             >
               <p>{e.fecha}</p>
               <p>{String(e.text).slice(0, 300) + " ..."}</p>
+              <PublishButton text1={e.fecha} text2={e.text.slice(0,200)} img="" />
             </div>
           );
         })}
