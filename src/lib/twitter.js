@@ -1,24 +1,24 @@
 "use server";
 
 import { TwitterApi, TwitterApiReadWrite, TwitterApiv2 } from "twitter-api-v2";
-// import { readdir } from "fs/promises";
-// import { join as pathJoin } from "path";
+import * as fs from "fs/promises";
+import { join as pathJoin } from "path";
 
-// const getFidelPath = () => {
-//   return pathJoin(process.cwd(), "public/fidel");
-// };
+const getFidelPath = () => {
+  return pathJoin(process.cwd(), "public/fidel");
+};
 
-// const touched = { current: false };
+const touched = { current: false };
 
-// const touchFidelPath = () => {
-//   if (touched.current) return; // only need to do once
-//   readdir(getFidelPath()); // fire and forget
-//   touched.current = true;
-// };
+const touchFidelPath = () => {
+  if (touched.current) return; // only need to do once
+  fs.readdir(getFidelPath()); // fire and forget
+  touched.current = true;
+};
 
 export default async function tweet(text1, text2, img) {
-  // touchFidelPath();
-  // console.log(process.cwd());
+  touchFidelPath();
+  console.log(process.cwd());
 
   const client = new TwitterApi({
     appKey: process.env.APP_KEY,

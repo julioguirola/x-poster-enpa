@@ -36,7 +36,7 @@ export default async function Home() {
                 <p>{n.text}</p>
                 <p>{n.url?.slice(0, 35) + " ..."}</p>
                 <PublishButton
-                  text1={n.url?.slice(0, 35) + " ..."}
+                  text1={n.url ?? "..."}
                   text2={n.text?.slice(0, 200)}
                   img=""
                 />
