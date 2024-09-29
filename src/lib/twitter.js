@@ -31,7 +31,7 @@ export default async function tweet(text1, text2, img) {
         await twitterClient.v1.uploadMedia(
           await createBufferFromImageUrl(
             "https://x-poster-enpa.vercel.app" + img,
-          ),
+          ), {type: "jpg"}
         ),
       ]);
 
