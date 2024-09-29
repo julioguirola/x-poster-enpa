@@ -30,7 +30,7 @@ export default async function tweet(text1, text2, img) {
       const mediaID = await Promise.all([
         await twitterClient.v1.uploadMedia(
           await createBufferFromImageUrl(
-            "https://x-poster-enpa.vercel.app" + url,
+            "https://x-poster-enpa.vercel.app" + img,
           ),
         ),
       ]);
