@@ -35,7 +35,7 @@ export default async function () {
             >
               <p>{e.fecha}</p>
               <p>{String(e.text).slice(0, 300) + " ..."}</p>
-              <PublishButton text1={e.fecha} text2={e.text.slice(0,200)} img="" />
+              <PublishButton text1={e.fecha} text2={e.text.slice(0,175) + " https://bnjm.cu/fechario"} img="" />
             </div>
           );
         })}
