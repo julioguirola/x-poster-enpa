@@ -2,7 +2,7 @@ import { client } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import PublishButton from "@/components/PublishButton";
-
+export const dynamic = "force-dynamic";
 export default async function () {
   const fecha = new Date();
   const dia = fecha.getDate();
@@ -35,7 +35,11 @@ export default async function () {
             >
               <p>{e.fecha}</p>
               <p>{String(e.text).slice(0, 300) + " ..."}</p>
-              <PublishButton text1={e.fecha} text2={e.text.slice(0,175) + " https://bnjm.cu/fechario"} img="" />
+              <PublishButton
+                text1={e.fecha}
+                text2={e.text.slice(0, 175) + " https://bnjm.cu/fechario"}
+                img=""
+              />
             </div>
           );
         })}

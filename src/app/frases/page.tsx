@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import PublishButton from "@/components/PublishButton";
-
+export const dynamic = "force-dynamic";
 export default async function () {
   async function getQuotes() {
     await client.connect();
