@@ -7,6 +7,7 @@ export async function scrap(url: string, selector: string) {
         "User-Agent":
           "Mozilla/5.0 (iPad; CPU OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
       },
+      cache: "no-store",
     });
     const text = await resp.text();
     const root = parse(text);
